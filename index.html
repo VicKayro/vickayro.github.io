@@ -25,8 +25,11 @@
   .book p{margin:0 0 10px 0;}
   .book-meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 10px 0;}
   .pill{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:4px 10px;font-size:13px;}
+  .book-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
   .book-btn{display:inline-block;background:#111;color:#fff;text-decoration:none;border-radius:10px;padding:10px 14px;font-weight:600;}
   .book-btn:hover{opacity:.9;text-decoration:none;}
+  .book-btn-alt{display:inline-block;background:#fff;color:#111;border:1px solid #111;text-decoration:none;border-radius:10px;padding:10px 14px;font-weight:600;}
+  .book-btn-alt:hover{background:#f5f5f5;text-decoration:none;}
 
   /* Header + portrait */
   .header{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;}
@@ -111,8 +114,16 @@
       <span class="pill">50 ou 90 minutes</span>
       <span class="pill">Demi-journée / Journée complète</span>
     </div>
-    <a class="book-btn" href="mailto:victor@kayro.ai?subject=Book%20me%20-%20conf%C3%A9rence">Book me</a>
+    <div class="book-actions">
+      <a class="book-btn" href="mailto:victor@kayro.ai?subject=Book%20me%20-%20conf%C3%A9rence">Book me</a>
+      <a class="book-btn-alt" href="mailto:victor@kayro.ai?subject=Invitation%20m%C3%A9dia%20-%20IA">Invitation média</a>
+    </div>
   </div>
+
+  <h2>bio média</h2>
+  <p>Victor Galli est entrepreneur en intelligence artificielle, cofondateur de Kayro.ai et fondateur de QUINT psy. Depuis plus de dix ans, il conçoit et déploie des systèmes technologiques pour des groupes du CAC 40, des services publics et des entreprises en forte transformation.</p>
+  <p>Son positionnement est rare: il relie la stratégie d’entreprise, les enjeux d’investissement et la réalité de l’exécution technique. Il intervient régulièrement auprès de dirigeants, boards et fonds de private equity pour éclairer les opportunités, les limites et les impacts humains de l’IA.</p>
+  <p>Avec QUINT psy, il explore l’intersection entre psychologie, IA conversationnelle et transformation comportementale, avec une ambition claire: produire une utilité psychologique réelle à grande échelle, en respectant la juste distance entre soin humain et interaction machine.</p>
 
   <!-- Frise chronologique (compacte, centrée sur Kayro) -->
   <div class="timeline">
