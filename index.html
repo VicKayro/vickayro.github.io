@@ -61,11 +61,12 @@
   .card .kicker{font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.02em}
   .card h3{font-size:15px;margin:0 0 6px 0;font-weight:600;}
   .card p{font-size:14px;margin:0;color:#333;}
-  .signature-list{border-top:1px solid var(--rule);margin-top:4px;}
-  .signature-item{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--rule);}
-  .signature-verb{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;}
-  .signature-body h3{font-size:17px;line-height:1.3;margin:0 0 5px 0;font-weight:600;}
-  .signature-body p{margin:0;font-size:15px;line-height:1.6;color:#222;}
+  .signature-list{border-top:1px solid var(--rule);margin-top:6px;}
+  .signature-item{display:grid;grid-template-columns:88px 140px 1fr;gap:18px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--rule);}
+  .signature-num{font-size:28px;line-height:1;color:#d4d4d4;font-weight:700;letter-spacing:.02em;}
+  .signature-verb{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-top:4px;}
+  .signature-body h3{font-size:18px;line-height:1.28;margin:0 0 6px 0;font-weight:650;}
+  .signature-body p{margin:0;font-size:15px;line-height:1.65;color:#222;max-width:720px;}
 
   /* Clients */
   .logo-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;}
@@ -75,7 +76,7 @@
   .writing-list{margin-top:6px;}
   .writing-list li{margin:8px 0;}
   .date{display:inline-block;width:72px;color:var(--muted);font-variant-numeric:tabular-nums;}
-  @media (max-width:560px){ :root{--rail:78px;} .entry::before{top:26px;} .date{width:auto;display:block;} .signature-item{grid-template-columns:1fr;gap:8px;padding:12px 0;} }
+  @media (max-width:560px){ :root{--rail:78px;} .entry::before{top:26px;} .date{width:auto;display:block;} .signature-item{grid-template-columns:1fr;gap:6px;padding:13px 0;} .signature-num{font-size:22px;} }
 
 </style>
 </head>
@@ -209,6 +210,7 @@
   <h2>signature de mes conférences</h2>
   <div class="signature-list">
     <div class="signature-item">
+      <div class="signature-num">01</div>
       <div class="signature-verb">Capter</div>
       <div class="signature-body">
         <h3>Créer une attention totale</h3>
@@ -216,6 +218,7 @@
       </div>
     </div>
     <div class="signature-item">
+      <div class="signature-num">02</div>
       <div class="signature-verb">Cadrer</div>
       <div class="signature-body">
         <h3>Donner une lecture stratégique</h3>
@@ -223,6 +226,7 @@
       </div>
     </div>
     <div class="signature-item">
+      <div class="signature-num">03</div>
       <div class="signature-verb">Challenger</div>
       <div class="signature-body">
         <h3>Élever le niveau des décisions</h3>
@@ -230,6 +234,7 @@
       </div>
     </div>
     <div class="signature-item">
+      <div class="signature-num">04</div>
       <div class="signature-verb">Actualiser</div>
       <div class="signature-body">
         <h3>Apporter une vision ancrée dans le réel</h3>
@@ -237,6 +242,7 @@
       </div>
     </div>
     <div class="signature-item">
+      <div class="signature-num">05</div>
       <div class="signature-verb">Adapter</div>
       <div class="signature-body">
         <h3>Concevoir le bon format</h3>
@@ -244,6 +250,7 @@
       </div>
     </div>
     <div class="signature-item">
+      <div class="signature-num">06</div>
       <div class="signature-verb">Faire agir</div>
       <div class="signature-body">
         <h3>Transformer les idées en exécution</h3>
