@@ -61,6 +61,11 @@
   .card .kicker{font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.02em}
   .card h3{font-size:15px;margin:0 0 6px 0;font-weight:600;}
   .card p{font-size:14px;margin:0;color:#333;}
+  .signature-list{border-top:1px solid var(--rule);margin-top:4px;}
+  .signature-item{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--rule);}
+  .signature-verb{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .signature-body h3{font-size:17px;line-height:1.3;margin:0 0 5px 0;font-weight:600;}
+  .signature-body p{margin:0;font-size:15px;line-height:1.6;color:#222;}
 
   /* Clients */
   .logo-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;}
@@ -70,7 +75,7 @@
   .writing-list{margin-top:6px;}
   .writing-list li{margin:8px 0;}
   .date{display:inline-block;width:72px;color:var(--muted);font-variant-numeric:tabular-nums;}
-  @media (max-width:560px){ :root{--rail:78px;} .entry::before{top:26px;} .date{width:auto;display:block;} }
+  @media (max-width:560px){ :root{--rail:78px;} .entry::before{top:26px;} .date{width:auto;display:block;} .signature-item{grid-template-columns:1fr;gap:8px;padding:12px 0;} }
 
 </style>
 </head>
@@ -202,13 +207,49 @@
 
   <!-- Signature conférences -->
   <h2>signature de mes conférences</h2>
-  <div class="cards">
-    <div class="card"><div class="kicker">CAPTER</div><h3>Créer une attention totale</h3><p>Chaque intervention est construite pour maintenir l’attention du début à la fin, avec une progression claire et un rythme maîtrisé.</p></div>
-    <div class="card"><div class="kicker">CADRER</div><h3>Donner une lecture stratégique</h3><p>Je rends lisibles les enjeux de disruption, de cannibalisation et de création de valeur pour éclairer les décisions du board.</p></div>
-    <div class="card"><div class="kicker">CHALLENGER</div><h3>Élever le niveau des décisions</h3><p>Dirigeants, fonds et top management repartent avec des arbitrages plus exigeants sur l’offre, la priorisation et l’exécution.</p></div>
-    <div class="card"><div class="kicker">ACTUALISER</div><h3>Apporter une vision ancrée dans le réel</h3><p>Mes contenus évoluent en continu, nourris par les systèmes que je construis et déploie chaque semaine sur le terrain.</p></div>
-    <div class="card"><div class="kicker">ADAPTER</div><h3>Concevoir le bon format</h3><p>20 min, 40 min, 50/90 min, demi-journée ou journée complète: le format est calibré selon vos enjeux et votre niveau de maturité.</p></div>
-    <div class="card"><div class="kicker">FAIRE AGIR</div><h3>Transformer les idées en exécution</h3><p>Je fais le pont entre business, management et technologie pour convertir la vision en plan d’action concret et immédiatement activable.</p></div>
+  <div class="signature-list">
+    <div class="signature-item">
+      <div class="signature-verb">Capter</div>
+      <div class="signature-body">
+        <h3>Créer une attention totale</h3>
+        <p>Chaque intervention est construite pour maintenir l’attention du début à la fin, avec une progression claire et un rythme maîtrisé.</p>
+      </div>
+    </div>
+    <div class="signature-item">
+      <div class="signature-verb">Cadrer</div>
+      <div class="signature-body">
+        <h3>Donner une lecture stratégique</h3>
+        <p>Je rends lisibles les enjeux de disruption, de cannibalisation et de création de valeur pour éclairer les décisions du board.</p>
+      </div>
+    </div>
+    <div class="signature-item">
+      <div class="signature-verb">Challenger</div>
+      <div class="signature-body">
+        <h3>Élever le niveau des décisions</h3>
+        <p>Dirigeants, fonds et top management repartent avec des arbitrages plus exigeants sur l’offre, la priorisation et l’exécution.</p>
+      </div>
+    </div>
+    <div class="signature-item">
+      <div class="signature-verb">Actualiser</div>
+      <div class="signature-body">
+        <h3>Apporter une vision ancrée dans le réel</h3>
+        <p>Mes contenus évoluent en continu, nourris par les systèmes que je construis et déploie chaque semaine sur le terrain.</p>
+      </div>
+    </div>
+    <div class="signature-item">
+      <div class="signature-verb">Adapter</div>
+      <div class="signature-body">
+        <h3>Concevoir le bon format</h3>
+        <p>20 min, 40 min, 50/90 min, demi-journée ou journée complète: le format est calibré selon vos enjeux et votre niveau de maturité.</p>
+      </div>
+    </div>
+    <div class="signature-item">
+      <div class="signature-verb">Faire agir</div>
+      <div class="signature-body">
+        <h3>Transformer les idées en exécution</h3>
+        <p>Je fais le pont entre business, management et technologie pour convertir la vision en plan d’action concret et immédiatement activable.</p>
+      </div>
+    </div>
   </div>
 
   <!-- Clients -->
