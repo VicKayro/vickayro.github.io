@@ -4,83 +4,101 @@
 <meta charset="utf-8">
 <title>Victor Galli</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="IA, conseil, conférences.">
+<meta name="description" content="Victor Galli. Cofondateur de Kayro. IA appliquée, stratégie pour dirigeants et fonds d'investissement, conférences, et des outils que je construis moi-même.">
 <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
 <style>
   :root{
-    --fg:#111; --muted:#555; --bg:#fff; --rule:#eaeaea; --max:960px;
-    --rail:96px; --dot:12px; --card-gap:12px;
+    --fg:#141414; --muted:#5b5b5b; --faint:#9a9a9a; --bg:#fbfbf9; --rule:#dcdcd8;
+    --max:820px; --rail:128px; --dot:9px;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",Times,serif;
+    --mono:"SF Mono",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
   }
   html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);}
-  body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;}
-  a{color:#000;text-decoration:underline;} a:hover{text-decoration:none;}
-  .wrap{max-width:var(--max);margin:32px auto;padding:0 16px;}
-  h1{font-size:28px;margin:0 0 6px 0;}
-  h2{font-size:18px;margin:28px 0 12px 0;font-weight:600;text-transform:lowercase;}
-  hr{border:0;border-top:1px solid var(--rule);margin:18px 0;}
-  .lead{color:var(--muted);margin:6px 0 14px 0;}
+  body{font:17px/1.6 var(--serif);}
+  a{color:var(--fg);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;}
+  a:hover{text-decoration:none;}
+  .wrap{max-width:var(--max);margin:40px auto 64px;padding:0 18px;}
+  h1{font-size:30px;line-height:1.15;margin:0 0 8px 0;font-weight:700;letter-spacing:-.01em;}
+  h2{font:13px/1.4 var(--mono);text-transform:lowercase;letter-spacing:.04em;color:var(--muted);margin:44px 0 14px 0;padding-bottom:6px;border-bottom:1px solid var(--rule);}
+  h2::before{content:"## ";color:var(--faint);}
+  p{margin:0 0 12px 0;}
+  hr{border:0;border-top:1px solid var(--rule);margin:22px 0;}
+  .lead{margin:6px 0 10px 0;}
+  .mono{font-family:var(--mono);font-size:13px;color:var(--muted);}
   .small{font-size:14px;color:var(--muted);}
-  .book{border:1px solid var(--rule);border-radius:14px;padding:14px;background:#fff;}
-  .book h2{margin:0 0 8px 0;text-transform:none;}
-  .book p{margin:0 0 10px 0;}
-  .book-meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 10px 0;}
-  .pill{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:4px 10px;font-size:13px;}
-  .book-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
-  .book-btn{display:inline-block;background:#111;color:#fff;text-decoration:none;border-radius:10px;padding:10px 14px;font-weight:600;}
-  .book-btn:hover{opacity:.9;text-decoration:none;}
-  .book-btn-alt{display:inline-block;background:#fff;color:#111;border:1px solid #111;text-decoration:none;border-radius:10px;padding:10px 14px;font-weight:600;}
-  .book-btn-alt:hover{background:#f5f5f5;text-decoration:none;}
+  .nav a{color:var(--fg);}
+  .nav span{color:var(--faint);}
 
   /* Header + portrait */
-  .header{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;}
-  .portrait{width:120px;height:120px;border-radius:14px;object-fit:cover;filter:grayscale(10%);border:1px solid var(--rule);}
-  @media (max-width:560px){ .portrait{width:88px;height:88px;} }
+  .header{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:start;}
+  .portrait{width:132px;height:132px;object-fit:cover;filter:grayscale(100%) contrast(1.05);border:1px solid var(--rule);background:#fff;}
+  @media (max-width:560px){ .header{grid-template-columns:1fr;} .portrait{width:96px;height:96px;order:-1;} }
 
-  /* Frise (style karpathy) */
-  .timeline{position:relative;margin:12px 0 8px 0;}
-  .timeline::before{content:"";position:absolute;left:calc(var(--rail) - 1px);top:0;bottom:0;width:2px;background:var(--rule);}
-  .entry{position:relative;display:flex;gap:16px;align-items:flex-start;padding:16px 0;}
-  .entry .when{flex:0 0 var(--rail);color:var(--muted);font-variant-numeric:tabular-nums;text-align:right;padding-right:16px;}
+  .contact{margin-top:14px;padding:8px 0;border-top:1px dotted var(--rule);border-bottom:1px dotted var(--rule);}
+
+  /* Frise */
+  .timeline{position:relative;margin:6px 0 0 0;}
+  .timeline::before{content:"";position:absolute;left:calc(var(--rail) - 1px);top:6px;bottom:6px;width:1px;background:var(--rule);}
+  .entry{position:relative;display:flex;gap:18px;align-items:flex-start;padding:14px 0;}
+  .entry .when{flex:0 0 var(--rail);box-sizing:border-box;font:12px/1.5 var(--mono);color:var(--muted);text-align:right;padding-right:22px;padding-top:6px;white-space:nowrap;}
   .entry .what{flex:1;min-width:0;}
-  .entry::before{content:"";position:absolute;left:calc(var(--rail) - var(--dot)/2);top:28px;width:var(--dot);height:var(--dot);border-radius:50%;background:var(--bg);border:2px solid #d0d0d0;}
-  .logo {
-  max-width:40px;
-  max-height:40px;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  vertical-align:middle;
-  margin-right:8px;
-  filter:grayscale(100%);
-}
-    ul.min{padding:0;margin:8px 0 0 0;list-style:none;} ul.min li{margin:6px 0;}
-  .thumb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;}
-  .thumb{width:100%;height:auto;border:1px solid var(--rule);}
+  .entry::before{content:"";position:absolute;left:calc(var(--rail) - var(--dot)/2 - 1px);top:24px;width:var(--dot);height:var(--dot);border-radius:50%;background:var(--bg);border:1px solid var(--muted);}
+  .logo{max-width:36px;max-height:36px;width:auto;height:auto;object-fit:contain;vertical-align:middle;margin-right:8px;filter:grayscale(100%);}
+  ul.min{padding:0;margin:8px 0 0 0;list-style:none;} ul.min li{margin:6px 0;}
+  .thumb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+  .thumb{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--rule);filter:grayscale(100%);background:#fff;}
+  .thumb:hover{filter:none;}
 
-  /* Public talks : cartes simples */
-  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--card-gap);}
-  .card{border:1px solid var(--rule);border-radius:12px;padding:12px;background:#fff;filter:grayscale(15%);}
-  .card:hover{filter:none}
-  .card .kicker{font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.02em}
-  .card h3{font-size:15px;margin:0 0 6px 0;font-weight:600;}
-  .card p{font-size:14px;margin:0;color:#333;}
+  /* Outils */
+  .tools{list-style:none;padding:0;margin:0;}
+  .tools li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px dotted var(--rule);}
+  .tools li:last-child{border-bottom:0;}
+  .tools .name{font-family:var(--mono);font-size:14px;padding-top:2px;}
+  .tools .name a{text-decoration:none;border-bottom:1px solid var(--fg);}
+  .tools .name a:hover{border-bottom-color:transparent;}
+  .tools .name .tag{display:block;font-size:11px;color:var(--faint);margin-top:3px;letter-spacing:.03em;}
+  .tools .desc{margin:0;}
+  .tools .desc .src{font-family:var(--mono);font-size:12px;color:var(--muted);}
+
+  /* Talks */
+  .talks{list-style:none;padding:0;margin:0;border-top:1px solid var(--rule);}
+  .talks li{display:grid;grid-template-columns:190px 1fr;gap:16px;padding:9px 0;border-bottom:1px dotted var(--rule);}
+  .talks .org{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:4px;letter-spacing:.02em;}
+  .talks .t{margin:0;}
+  .talks .t em{font-style:normal;color:var(--muted);}
+
+  /* Signature */
   .signature-list{border-top:1px solid var(--rule);margin-top:6px;}
-  .signature-item{display:grid;grid-template-columns:88px 140px 1fr;gap:18px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--rule);}
-  .signature-num{font-size:28px;line-height:1;color:#d4d4d4;font-weight:700;letter-spacing:.02em;}
-  .signature-verb{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-top:4px;}
-  .signature-body h3{font-size:18px;line-height:1.28;margin:0 0 6px 0;font-weight:650;}
-  .signature-body p{margin:0;font-size:15px;line-height:1.65;color:#222;max-width:720px;}
+  .signature-item{display:grid;grid-template-columns:56px 130px 1fr;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px dotted var(--rule);}
+  .signature-num{font:22px/1.2 var(--mono);color:var(--faint);}
+  .signature-verb{font:12px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:5px;}
+  .signature-body h3{font-size:17px;line-height:1.3;margin:0 0 4px 0;font-weight:700;}
+  .signature-body p{margin:0;font-size:15.5px;line-height:1.6;color:#222;max-width:640px;}
 
   /* Clients */
-  .logo-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;}
-  .logo-grid img{width:56px;height:56px;object-fit:contain;filter:grayscale(100%);border:1px solid var(--rule);border-radius:8px;padding:6px;background:#fff;}
-  
-  /* Écriture (liste façon karpathy) */
-  .writing-list{margin-top:6px;}
-  .writing-list li{margin:8px 0;}
-  .date{display:inline-block;width:72px;color:var(--muted);font-variant-numeric:tabular-nums;}
-  @media (max-width:560px){ :root{--rail:78px;} .entry::before{top:26px;} .date{width:auto;display:block;} .signature-item{grid-template-columns:1fr;gap:6px;padding:13px 0;} .signature-num{font-size:22px;} }
+  .logo-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .logo-grid img{width:56px;height:56px;object-fit:contain;filter:grayscale(100%);border:1px solid var(--rule);padding:6px;background:#fff;box-sizing:border-box;}
+  .logo-grid img:hover{filter:none;}
 
+  /* Écriture */
+  .writing-list{list-style:none;padding:0;margin:0 0 10px 0;}
+  .writing-list li{margin:7px 0;padding-left:84px;text-indent:-84px;}
+  .writing-list.nodate li{padding-left:0;text-indent:0;}
+  .date{display:inline-block;width:84px;text-indent:0;font-family:var(--mono);font-size:12px;color:var(--muted);vertical-align:baseline;}
+  h3.sub{font:12px/1.5 var(--mono);color:var(--muted);text-transform:lowercase;letter-spacing:.04em;margin:18px 0 6px 0;font-weight:400;}
+
+  footer{margin-top:56px;padding-top:12px;border-top:1px solid var(--rule);}
+
+  @media (max-width:560px){
+    :root{--rail:92px;}
+    body{font-size:16px;}
+    .entry .when{font-size:11px;white-space:normal;}
+    .entry::before{top:22px;}
+    .tools li{grid-template-columns:1fr;gap:4px;}
+    .talks li{grid-template-columns:1fr;gap:2px;}
+    .signature-item{grid-template-columns:40px 1fr;} .signature-verb{grid-column:2;} .signature-body{grid-column:2;}
+    .writing-list li{padding-left:0;text-indent:0;} .date{display:block;width:auto;}
+  }
 </style>
 </head>
 <body>
@@ -90,82 +108,48 @@
   <div class="header">
     <div>
       <h1>Victor Galli</h1>
-      <div class="lead">J’aime concevoir des systèmes d’intelligence artificielle appliquée pour réinventer les industries traditionnelles. 
-    </div>
-      <div class="small">
-        <a href="https://kayro.ai" rel="noopener">Kayro.ai</a> · 
-        <a href="mailto:victor@kayro.ai">victor@kayro.ai</a> · 
-        <a href="https://www.linkedin.com/in/victor-galli/" rel="noopener">LinkedIn</a> · 
-        <a href="https://github.com/VicKayro" rel="noopener">GitHub</a>
+      <p class="lead">Je conçois des systèmes d’intelligence artificielle appliquée pour réinventer les industries traditionnelles, et je travaille avec les dirigeants et les fonds d’investissement qui doivent décider, dès maintenant, ce que l’IA change dans leur chaîne de valeur.</p>
+      <p class="lead small">Cofondateur de Kayro. Une centaine d’entreprises accompagnées, des comités d’investissement, des boards, et des produits que je construis moi-même pour garder les mains dans la machine.</p>
+      <div class="mono nav">
+        <a href="https://kayro.ai" rel="noopener">kayro.ai</a> <span>·</span>
+        <a href="mailto:victor@kayro.ai">victor@kayro.ai</a> <span>·</span>
+        <a href="https://www.linkedin.com/in/victor-galli/" rel="noopener">linkedin</a> <span>·</span>
+        <a href="https://github.com/VicKayro" rel="noopener">github</a> <span>·</span>
+        <a href="https://medium.com/@victor_72934" rel="noopener">medium</a>
       </div>
     </div>
-    <!-- Place ton fichier : images/portrait.jpg -->
-    <img class="portrait" src="./assets/img/Capture d’écran 2026-01-05 à 18.41.37.png" alt="Victor Galli">
+    <img class="portrait" src="./assets/img/portrait.jpg" alt="Victor Galli">
   </div>
 
-  <hr>
-  
-  <div class="book">
-    <h2>Book me — repensez votre entreprise avant que votre marché ne soit cannibalisé</h2>
-    <p>J’interviens auprès de directions générales, fonds d’investissement et top management pour comprendre les impacts de l’IA sur la chaîne de valeur, les risques de disruption, et les décisions à prendre maintenant.</p>
-    <div class="book-meta">
-      <span class="pill">Formats: 20 minutes</span>
-      <span class="pill">40 minutes</span>
-      <span class="pill">50 ou 90 minutes</span>
-      <span class="pill">Demi-journée / Journée complète</span>
-    </div>
-    <div class="book-actions">
-      <a class="book-btn" href="mailto:victor@kayro.ai?subject=Book%20me%20-%20conf%C3%A9rence">Book me</a>
-      <a class="book-btn-alt" href="mailto:victor@kayro.ai?subject=Invitation%20m%C3%A9dia%20-%20IA">Invitation média</a>
-    </div>
-  </div>
+  <div class="contact mono">Conférences, comités et boards : un mail suffit, <a href="mailto:victor@kayro.ai?subject=Intervention">victor@kayro.ai</a>. Les formats sont décrits plus bas.</div>
 
-  <!-- Frise chronologique (compacte, centrée sur Kayro) -->
+  <!-- Frise -->
+  <h2>parcours</h2>
   <div class="timeline">
 
     <div class="entry">
-      <div class="when">2025 – aujourd’hui</div>
+      <div class="when">2023 – auj.</div>
       <div class="what">
-        <img class="logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23111827'/%3E%3Cstop offset='1' stop-color='%232a3f66'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='96' height='96' rx='20' fill='url(%23g)'/%3E%3Ccircle cx='45' cy='45' r='22' fill='none' stroke='%23ffffff' stroke-width='8'/%3E%3Cpath d='M58 58 L74 74' stroke='%23ffffff' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E" alt="Logo QUINT psy">
-        Chez <a href="https://quint-psy-site.vercel.app/" rel="noopener">QUINT psy</a>, on travaille sur l’IA conversationnelle clinique-adjacente avec une logique de recherche appliquée.
-        <br>Notre axe central: Real-Time Psychological Modeling, avec trois chantiers techniques majeurs.
-        <br>Premier chantier: Regulation State Detection. Deuxième chantier: Longitudinal User Profiling. Troisième chantier: Cross-Session Pattern Recognition.
-        <br>Le but est d’opérationnaliser les mécanismes fondamentaux du changement thérapeutique dans des systèmes testables.
-        <br>Architecture de travail: estimation d’état psychologique en temps réel, puis couche de mémoire et profil longitudinal, puis moteur de sélection d’intervention, puis garde-fous de sécurité explicites.
-        <br>Côté recherche, on avance par hypothèses falsifiables au sens scientifique, protocoles d’expérimentation, et mesure d’effets session par session puis sur trajectoire.
-        <br>Pourquoi ce travail: rendre un support psychologique sérieux plus accessible quand l’accès au soin est trop rare, trop lent ou trop coûteux, et on ne remplace pas un thérapeute; on construit un complément fiable entre les séances, avec des limites claires et auditables.
-      </div>
-    </div>
-
-    <!-- Kayro (entrée principale avec vignettes) -->
-    <div class="entry">
-      <div class="when">2023 – aujourd’hui</div>
-      <div class="what">
-        <img class="logo" src="https://cdn.prod.website-files.com/6798e14b489367f9260ee272/67a47aa92eed132d30642c80_opengraph.png" alt="Kayro.ai"> </li>
-        Avec <a href="https://thomas-solignac.com/" rel="noopener">Thomas Solignac</a>, j’ai cofondé <a href="https://www.kayro.ai/" rel="noopener">kayro.ai</a>, un cabinet d’IA appliquée créé par des entrepreneurs pour des entrepreneurs. En 2 ans, on a livré 90+ projets IA en production pour des PME, ETI et entreprises sous LBO. </br>
-        <br> On a construit une équipe d’élite de 25+ profils (anciens fondateurs, CTOs, ingénieurs seniors), pensée pour la vitesse, l’expérimentation et l’exécution sur des projets complexes et sensibles. </br>
-        <br> Kayro a fait x2 depuis sa création et dépassé 1M€ de revenu annuel, sans lever de fonds. </br>
-        <br> En même temps, je donne des conférences auprès de directions générales, comités d’investissement et équipes produit/data (Ardian, KPMG, Rothschild & Co, Total, ANFH...). </li>
-        <br> Et je partage mes apprentissages en écrivant des articles et des posts sur <a href="https://www.linkedin.com/in/victor-galli/" rel="noopener">LinkedIn</a>. </li>
-        <br> 90+ projets IA en 2 ans (<a href="https://www.kayro.ai/references" rel="noopener">références</a>). </br>
+        <img class="logo" src="https://cdn.prod.website-files.com/6798e14b489367f9260ee272/67a47aa92eed132d30642c80_opengraph.png" alt="Kayro.ai">
+        Avec <a href="https://thomas-solignac.com/" rel="noopener">Thomas Solignac</a>, j’ai cofondé <a href="https://www.kayro.ai/" rel="noopener">kayro.ai</a>, un cabinet d’IA appliquée créé par des entrepreneurs pour des entrepreneurs. En trois ans, plus de 120 projets IA déployés en production dans 80 entreprises : PME, ETI, groupes, sociétés sous LBO (<a href="https://www.kayro.ai/references" rel="noopener">références</a>).
+        <p style="margin-top:10px">Une équipe de 25+ profils (anciens fondateurs, CTOs, ingénieurs seniors), pensée pour la vitesse, l’expérimentation et l’exécution sur des sujets complexes et sensibles. Kayro a fait x2 depuis sa création et dépassé 1 M€ de revenu annuel, sans lever de fonds.</p>
+        <p>En parallèle, je travaille avec des directions générales, des comités d’investissement et des fonds (Ardian, Eurazeo, KPMG, Rothschild &amp; Co, TotalEnergies, ANFH...) sur ce que l’IA change dans leurs modèles économiques, leurs portefeuilles et leurs thèses d’investissement. La plus grande partie de ce travail ne se raconte pas ici : il se passe en comité, avant que les décisions ne soient prises.</p>
         <ul class="min small">
-          <li>Membre <em>Hub FranceIA</em>. Expert AI/Data pour <a href="https://www.bpifrance.fr/" rel="noopener">bpifrance</a> <em>(IA Booster – France 2030). Operating partner pour Private Equity et VC.</em> </li>
+          <li>Membre du <em>Hub FranceIA</em>. Expert AI/Data pour <a href="https://www.bpifrance.fr/" rel="noopener">bpifrance</a> (IA Booster, France 2030). Operating partner pour des fonds de Private Equity et de VC.</li>
         </ul>
-        <!-- 2–3 images de talks (remplace les fichiers) -->
         <div class="thumb-grid">
-          <img class="thumb" src="./assets/img/Capture d’écran 2026-01-05 à 18.40.30.png">
-          <img class="thumb" src="./assets/img/Capture d’écran 2026-01-17 à 14.07.51.png" alt="TV"> 
-          <img class="thumb" src="./assets/img/conf rdd.jpeg">
+          <img class="thumb" src="./assets/img/talk-atelier.jpg" alt="Atelier IA avec des dirigeants">
+          <img class="thumb" src="./assets/img/talk-tv.jpg" alt="Plateau TV, Les bouleversements du siècle">
+          <img class="thumb" src="./assets/img/conf-rdd.jpeg" alt="Rencontres du Développement Durable">
         </div>
       </div>
     </div>
 
-    <!-- Expériences antérieures (résumées, style sec) -->
     <div class="entry">
       <div class="when">2022 – 2023</div>
       <div class="what">
         <img class="logo" src="https://cdn-images.welcometothejungle.com/FD5e-trEgB7DEmYN5QjdqaIvZxaSWHmoa3H6glvkJZA/rs:auto:400::/q:85/czM6Ly93dHRqLXByb2R1Y3Rpb24vdXBsb2Fkcy9vcmdhbml6YXRpb24vbG9nby82NzExLzE1NTY1NC8wOGM1NWE2NC1iNjYyLTRlMjYtYjNkMy03NGI1YmRiNjQwMzQucG5n" alt="Theodo FinTech">
-        Chez <a href="https://fintech.theodo.com/" rel="noopener">Theodo Fintech</a> (Startup Studio <a href="https://www.linkedin.com/company/m33-tech/?originalSubdomain=fr" rel="noopener">M33</a>) - Design de produits fintech (BaaS, paiements), cadrage et avant-vente. Et début de mon obsession pour l'IA.
+        Chez <a href="https://fintech.theodo.com/" rel="noopener">Theodo Fintech</a> (startup studio <a href="https://www.linkedin.com/company/m33-tech/" rel="noopener">M33</a>) : design de produits fintech (BaaS, paiements), cadrage et avant-vente. Et le début de mon obsession pour l’IA.
       </div>
     </div>
 
@@ -173,10 +157,8 @@
       <div class="when">2018 – 2022</div>
       <div class="what">
         <img class="logo" src="https://www.wavestone.com/wp-content/uploads/2024/05/5034003484e-wavestonecondensedlogo-bluergb.jpg" alt="Wavestone">
-        Dans l'équipe stratégie de <a href="https://www.wavestone.com/fr/" rel="noopener">Wavestone</a>, j'ai piloté des transformations tech d'envergure pour des clients internationaux. 
-         <br> Cela inclut la création d'opérateurs IT à l'échelle mondiale, le déploiement de technologies de pointe (dev, data, infra), la réorganisation des équipes tech d'entreprises, ministères et services publics et le training des DSI sur les meilleures pratiques d'innovation.  </br>
-         <br> Avec quelques collègues, on a également créé l'initiative du Mécénat de compétences chez Wavestone. En un an, nous réalisions 6000 j/an de conseil pro bono pour des associations. </br>
-  
+        Dans l’équipe stratégie de <a href="https://www.wavestone.com/fr/" rel="noopener">Wavestone</a>, j’ai piloté des transformations tech d’envergure pour des clients internationaux : création d’opérateurs IT à l’échelle mondiale, déploiement de technologies de pointe (dev, data, infra), réorganisation des équipes tech d’entreprises, de ministères et de services publics, formation des DSI aux pratiques d’innovation.
+        <p style="margin-top:10px">Avec quelques collègues, on a aussi créé le mécénat de compétences chez Wavestone. En un an, 6 000 jours de conseil pro bono par an pour des associations.</p>
       </div>
     </div>
 
@@ -191,31 +173,63 @@
     <div class="entry">
       <div class="when">2016 – 2018</div>
       <div class="what">
-        <img class="logo" src="data:image/png;base64,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" alt="https://modis.gsfc.nasa.gov/">
-        Découverte de la tech chez Modis, en lançant des projets de dev/infra/data dans l’énergie, l'industrie et les télécoms.
+        <img class="logo" src="data:image/png;base64,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" alt="Modis">
+        Découverte de la tech chez Modis, en lançant des projets de dev, d’infra et de data dans l’énergie, l’industrie et les télécoms.
       </div>
     </div>
 
   </div>
-  <!-- /Frise -->
+
+  <!-- Outils -->
+  <h2>ce que je construis</h2>
+  <p>Je code ce que je conseille. Ces produits sont en ligne, construits et opérés seuls, souvent la nuit avec des agents, et ils me servent de terrain : c’est là que je vois ce que l’IA fait vraiment, avant d’en parler à un comité.</p>
+  <ul class="tools">
+    <li>
+      <div class="name"><a href="https://geo-audit-delta.vercel.app" rel="noopener">GEO Audit</a><span class="tag">marketing · LLM</span></div>
+      <p class="desc">Est-ce que les IA vous citent ? Un audit à preuves : accès des robots IA, citabilité du contenu, entité de marque, et un test réel dans ChatGPT avec la liste des concurrents cités à votre place.</p>
+    </li>
+    <li>
+      <div class="name"><a href="https://getleash.vercel.app" rel="noopener">leash</a><span class="tag">agents · infra</span></div>
+      <p class="desc">See what your agents did last night. Une commande <span class="src">npx getleash</span> et vous voyez les coûts, les boucles, les crons morts et les workflows en échec de vos agents Claude Code, machine par machine. <a href="https://github.com/VicKayro/leash" rel="noopener">Code source</a>.</p>
+    </li>
+    <li>
+      <div class="name"><a href="https://veridique-deploy.vercel.app" rel="noopener">Véridique</a><span class="tag">politique · NLP</span></div>
+      <p class="desc">Les écarts entre les déclarations et les actes de 34 responsables politiques, comparés automatiquement : 101 contradictions relevées sur 9 804 paires.</p>
+    </li>
+    <li>
+      <div class="name"><a href="https://rouky.vercel.app" rel="noopener">Rouky</a><span class="tag">santé animale</span></div>
+      <p class="desc">L’institut de longévité de votre animal. Rouky lit le bilan sanguin d’un chien ou d’un chat, repère tôt ce qui mérite l’œil du vétérinaire et suit chaque valeur, bilan après bilan.</p>
+    </li>
+    <li>
+      <div class="name"><a href="https://hellorevio.com" rel="noopener">Revio</a><span class="tag">finance perso</span></div>
+      <p class="desc">Le comptable perso des gens qui gèrent mal leur argent. Quatre minutes de questions pour savoir où on en est, puis les courriers, les relevés et les doutes, traités en français normal.</p>
+    </li>
+    <li>
+      <div class="name"><a href="https://vicky.how" rel="noopener">Vicky</a><span class="tag">psychologie · mémoire</span></div>
+      <p class="desc">Pas un coach, pas un thérapeute. Un miroir qui détecte vos patterns, suit vos tensions dans le temps et vous aide à voir clair.</p>
+    </li>
+    <li>
+      <div class="name"><a href="https://quint-psy-site.vercel.app/" rel="noopener">QUINT psy</a><span class="tag">recherche appliquée</span></div>
+      <p class="desc">Un labo d’IA conversationnelle clinique-adjacente : estimation de l’état psychologique en temps réel, profil longitudinal, sélection d’intervention et garde-fous explicites, avec des hypothèses falsifiables et une mesure des effets session par session. Un complément entre les séances, jamais un remplaçant du thérapeute.</p>
+    </li>
+  </ul>
 
   <!-- Public talks -->
   <h2>public talks</h2>
-  <div class="cards">
-    <div class="card"><div class="kicker">Parquest</div><h3>Comment l’IA disrupte les industries</h3><p>L'IA, bâtisseuse et fossoyeuse d'empires.</p></div>
-    <div class="card"><div class="kicker">Project Management Institute</div><h3>Comment innover quand on est un Grand Groupe</h3><p>Philosophie, gouvernance et cadence.</p></div>
-    <div class="card"><div class="kicker">Caisse des écoles</div><h3>L'impact de l'IA pour le service public</h3><p>Comment utiliser la technologie pour améliorer la prise en charge.</p></div>
-    <div class="card"><div class="kicker">Rencontres du Développement Durable</div><h3>IA et société : quels avenirs sont possibles ?</h3><p>Les apports et les risques de la technologie, et la responsabilité qui nous incombe.</p></div>
-    <div class="card"><div class="kicker">SBM Offshore</div><h3>Inventer le compétiteur IA qui remplacera une entreprise</h3><p>Principes de disruption et stratégie offensive.</p></div>
-    <div class="card"><div class="kicker">AI Camp</div><h3>Comment estimer un projet IA</h3><p>Découvrir mon modèle mental pour anticiper les coûts d'un projet.</p></div>
-    <div class="card"><div class="kicker">KPMG</div><h3>Après l'IA - Le métier d'audit dans 10 ans</h3><p>Comment nous transformons aujourd'hui les métiers de l'audit et de la certification.</p></div>
-    <div class="card"><div class="kicker">Numeum × Rothschild &amp; Co</div><h3>L’IA pour les cabinets de conseil</h3><p>Modèles économiques et delivery.</p></div>
-    <div class="card"><div class="kicker">investir+</div><h3>Scaler une startup à impact grâce à l'IA</h3><p>Comprendre l'IA et s'en servir pour détroner les leaders d'un marché.</p></div>
-    <div class="card"><div class="kicker">TotalEnergies</div><h3>Builder un “AWS de l’IT”</h3><p>Plateformes internes à l'heure de l'IA.</p></div>
-    <div class="card"><div class="kicker">Bremens Avocats</div><h3>Avocat &amp; IA</h3><p>Productivité &amp; risque.</p></div>
-    <div class="card"><div class="kicker">Rakuten</div><h3>SalesOps IA</h3><p>Les marketplaces à l'heure de l'IA</p></div>
-
-  </div>
+  <ul class="talks">
+    <li><div class="org">Parquest</div><p class="t">Comment l’IA disrupte les industries <em>· l’IA, bâtisseuse et fossoyeuse d’empires</em></p></li>
+    <li><div class="org">KPMG</div><p class="t">Après l’IA : le métier d’audit dans 10 ans <em>· comment on transforme aujourd’hui l’audit et la certification</em></p></li>
+    <li><div class="org">Numeum × Rothschild &amp; Co</div><p class="t">L’IA pour les cabinets de conseil <em>· modèles économiques et delivery</em></p></li>
+    <li><div class="org">SBM Offshore</div><p class="t">Inventer le compétiteur IA qui remplacera une entreprise <em>· principes de disruption et stratégie offensive</em></p></li>
+    <li><div class="org">TotalEnergies</div><p class="t">Builder un « AWS de l’IT » <em>· plateformes internes à l’heure de l’IA</em></p></li>
+    <li><div class="org">Project Management Institute</div><p class="t">Comment innover quand on est un grand groupe <em>· philosophie, gouvernance et cadence</em></p></li>
+    <li><div class="org">Rencontres du Développement Durable</div><p class="t">IA et société : quels avenirs sont possibles ? <em>· apports, risques, et la responsabilité qui nous incombe</em></p></li>
+    <li><div class="org">Caisse des écoles</div><p class="t">L’impact de l’IA pour le service public <em>· utiliser la technologie pour améliorer la prise en charge</em></p></li>
+    <li><div class="org">investir+</div><p class="t">Scaler une startup à impact grâce à l’IA <em>· comprendre l’IA et s’en servir pour détrôner les leaders d’un marché</em></p></li>
+    <li><div class="org">AI Camp</div><p class="t">Comment estimer un projet IA <em>· mon modèle mental pour anticiper les coûts</em></p></li>
+    <li><div class="org">Bremens Avocats</div><p class="t">Avocat &amp; IA <em>· productivité et risque</em></p></li>
+    <li><div class="org">Rakuten</div><p class="t">SalesOps IA <em>· les marketplaces à l’heure de l’IA</em></p></li>
+  </ul>
 
   <!-- Signature conférences -->
   <h2>signature de mes conférences</h2>
@@ -225,7 +239,7 @@
       <div class="signature-verb">Capter</div>
       <div class="signature-body">
         <h3>Créer une attention totale</h3>
-        <p>Chaque intervention est construite pour maintenir l’attention du début à la fin, avec une progression claire et un rythme maîtrisé.</p>
+        <p>Chaque intervention est construite pour tenir l’attention du début à la fin, avec une progression claire et un rythme maîtrisé.</p>
       </div>
     </div>
     <div class="signature-item">
@@ -265,7 +279,7 @@
       <div class="signature-verb">Adapter</div>
       <div class="signature-body">
         <h3>Concevoir le bon format</h3>
-        <p>20 min, 40 min, 50/90 min, demi-journée ou journée complète: le format est calibré selon vos enjeux et votre niveau de maturité.</p>
+        <p>20 min, 40 min, 50 ou 90 min, demi-journée ou journée complète : le format est calibré selon vos enjeux et votre niveau de maturité.</p>
       </div>
     </div>
     <div class="signature-item">
@@ -280,8 +294,6 @@
 
   <!-- Clients -->
   <h2>clients</h2>
-  <div class="small"><a href="./clients.html">voir tous les clients</a></div>
-  <!-- Place les fichiers logos/xxx.(svg|png). Niveaux de gris recommandé. -->
   <div class="logo-grid" aria-label="logos clients">
     <img src="data:image/png;base64,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" alt="Air Liquide">
     <img src="data:image/png;base64,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" alt="Ministère de la Justice">
@@ -297,31 +309,42 @@
     <img src="data:image/png;base64,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" alt="ACPM">
     <img src="data:image/png;base64,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" alt="UTAC">
   </div>
+  <div class="mono" style="margin-top:10px"><a href="./clients.html">voir tous les clients</a></div>
 
   <!-- Écriture -->
   <h2>écriture</h2>
+  <h3 class="sub">essais, sur <a href="https://medium.com/@victor_72934" rel="noopener">medium</a></h3>
   <ul class="writing-list">
-    <li><span class="date">2025</span><a href="https://www.kayro.ai/blog/illusion-du-cerveau-llm" rel="noopener">L’illusion du cerveau : pourquoi le LLM n’est qu’un organe dans une machine plus vaste</a></li>
-    <li><span class="date">2025</span><a href="https://www.kayro.ai/blog/pricing-outils-ia-pourquoi-le-token-mark-up-pourrait-simposer" rel="noopener">Pricing des outils IA : pourquoi le token mark-up pourrait s’imposer</a></li>
-    <li><span class="date">2025</span><a href="https://www.kayro.ai/blog/ce-quon-oublie-encore-dans-les-comites-dinvestissement-ia" rel="noopener">Ce qu’on oublie encore dans les comités d’investissement IA</a></li>
-    <li><span class="date">2025</span><a href="https://www.kayro.ai/blog/80-des-agents-ia-sont-de-simples-automatisations" rel="noopener">80 % des agents IA sont de simples automatisations</a></li>
-    <li><span class="date">2025</span><a href="https://www.kayro.ai/blog/non-la-bulle-ia-na-pas-eclate-mais-certaines-illusions-oui" rel="noopener">Non, la bulle IA n’a pas éclaté — certaines illusions, oui</a></li>
-    <li><span class="date">2025</span><a href="https://www.kayro.ai/blog/le-grand-retour-de-la-connaissance-explicite">Le grand retour de la connaissance explicite</a></li>
-    <li><span class="date">2024</span><a href="https://www.kayro.ai/blog/large-language-models-lessentiel-pour-se-lancer" rel="noopener">LLM : l’essentiel pour se lancer</a></li>
-    <li><span class="date">2024</span><a href="https://www.kayro.ai/blog/lancer-un-projet-de-deep-learning-ou-le-mariage-heureux-de-la-recherche-et-du-produit" rel="noopener">Lancer un projet de Deep Learning : le mariage heureux de la recherche et du produit</a></li>
-    <li><span class="date">2024</span><a href="https://www.kayro.ai/blog/estimer-le-cout-dun-projet-ia-comment-eviter-les-pieges-et-choisir-un-prestataire-serieux" rel="noopener">Estimer le coût d’un projet IA : éviter les pièges et choisir un prestataire sérieux</a></li>
-    <li><span class="date">2024</span><a href="https://www.kayro.ai/blog/comment-lintelligence-artificielle-transforme-le-secteur-du-conseil-en-2024" rel="noopener">Comment l’IA transforme le secteur du conseil en 2024</a></li>
-    <li><span class="date">2024</span><a href="https://www.kayro.ai/blog/deployer-une-application-ia-sappuyant-sur-les-llm-optimiser-le-triangle-des-performances-critiques" rel="noopener">Déployer une app IA sur LLM : optimiser le triangle des perfs critiques</a></li>
-    <li><span class="date">2024</span><a href="https://www.kayro.ai/blog/debusquer-les-meilleurs-cas-dusage-de-lintelligence-artificielle-ou-reussir-ses-entretiens-utilisateurs" rel="noopener">Débusquer les meilleurs cas d’usage IA : réussir ses entretiens utilisateurs</a></li>
-    <li> J'ai lancé un <a href="https://medium.com/@victor_72934" rel="noopener">blog personnel</a> pour traiter d'autres sujets que l'IA. </li>
-
+    <li><span class="date">fév. 2026</span><a href="https://medium.com/@victor_72934/lia-et-la-fragilit%C3%A9-du-lien-entre-travail-et-revenu-365ae3f2f778" rel="noopener">L’IA et la fragilité du lien entre travail et revenu</a></li>
+    <li><span class="date">fév. 2026</span><a href="https://medium.com/@victor_72934/le-luxe-de-rester-en-lien-90744e804113" rel="noopener">Le luxe de rester en lien</a></li>
+    <li><span class="date">déc. 2025</span><a href="https://medium.com/@victor_72934/arnault-contre-lucet-anatomie-dun-dialogue-de-sourds-46f69b078d90" rel="noopener">Arnault contre Lucet : anatomie d’un dialogue de sourds</a></li>
+    <li><span class="date">nov. 2025</span><a href="https://medium.com/@victor_72934/lia-et-la-fin-du-travail-alibi-2fdcebe21a19" rel="noopener">L’IA et la fin du travail « alibi »</a></li>
+    <li><span class="date">sept. 2025</span><a href="https://medium.com/@victor_72934/d%C3%A9penses-ou-recettes-d%C3%A9passer-le-faux-dilemme-c8791dbaf7f9" rel="noopener">Dépenses ou recettes : dépasser le faux dilemme</a></li>
+    <li><span class="date">août 2025</span><a href="https://medium.com/@victor_72934/rendre-lutile-irr%C3%A9sistiblement-rentable-d94885da78f2" rel="noopener">Rendre l’utile irrésistiblement rentable</a></li>
+    <li><span class="date">août 2025</span><a href="https://medium.com/@victor_72934/la-panne-fran%C3%A7aise-f68ab37362ff" rel="noopener">La panne française</a></li>
   </ul>
 
-</div>
+  <h3 class="sub">ia appliquée, sur le <a href="https://www.kayro.ai/blog" rel="noopener">blog de kayro</a></h3>
+  <ul class="writing-list nodate">
+    <li><a href="https://www.kayro.ai/blog/pme-ou-grand-groupe-faut-il-creer-son-propre-llm" rel="noopener">PME ou grand groupe : faut-il créer son propre LLM ?</a></li>
+    <li><a href="https://www.kayro.ai/blog/cest-quoi-vraiment-un-agent-ia-et-en-avez-vous-besoin" rel="noopener">C’est quoi, vraiment, un agent IA, et en avez-vous besoin ?</a></li>
+    <li><a href="https://www.kayro.ai/blog/illusion-du-cerveau-llm" rel="noopener">L’illusion du cerveau : pourquoi le LLM n’est qu’un organe dans une machine plus vaste</a></li>
+    <li><a href="https://www.kayro.ai/blog/pricing-outils-ia-pourquoi-le-token-mark-up-pourrait-simposer" rel="noopener">Pricing des outils IA : pourquoi le token mark-up pourrait s’imposer</a></li>
+    <li><a href="https://www.kayro.ai/blog/ce-quon-oublie-encore-dans-les-comites-dinvestissement-ia" rel="noopener">Ce qu’on oublie encore dans les comités d’investissement IA</a></li>
+    <li><a href="https://www.kayro.ai/blog/80-des-agents-ia-sont-de-simples-automatisations" rel="noopener">80 % des agents IA sont de simples automatisations</a></li>
+    <li><a href="https://www.kayro.ai/blog/non-la-bulle-ia-na-pas-eclate-mais-certaines-illusions-oui" rel="noopener">Non, la bulle IA n’a pas éclaté. Certaines illusions, oui</a></li>
+    <li><a href="https://www.kayro.ai/blog/le-grand-retour-de-la-connaissance-explicite" rel="noopener">Le grand retour de la connaissance explicite</a></li>
+    <li><a href="https://www.kayro.ai/blog/carnet-de-culture-ml" rel="noopener">Carnet de culture ML</a></li>
+    <li><a href="https://www.kayro.ai/blog/large-language-models-lessentiel-pour-se-lancer" rel="noopener">LLM : l’essentiel pour se lancer</a></li>
+    <li><a href="https://www.kayro.ai/blog/lancer-un-projet-de-deep-learning-ou-le-mariage-heureux-de-la-recherche-et-du-produit" rel="noopener">Lancer un projet de Deep Learning : le mariage heureux de la recherche et du produit</a></li>
+    <li><a href="https://www.kayro.ai/blog/estimer-le-cout-dun-projet-ia-comment-eviter-les-pieges-et-choisir-un-prestataire-serieux" rel="noopener">Estimer le coût d’un projet IA : éviter les pièges et choisir un prestataire sérieux</a></li>
+    <li><a href="https://www.kayro.ai/blog/comment-lintelligence-artificielle-transforme-le-secteur-du-conseil-en-2024" rel="noopener">Comment l’IA transforme le secteur du conseil</a></li>
+    <li><a href="https://www.kayro.ai/blog/deployer-une-application-ia-sappuyant-sur-les-llm-optimiser-le-triangle-des-performances-critiques" rel="noopener">Déployer une app IA sur LLM : optimiser le triangle des performances critiques</a></li>
+    <li><a href="https://www.kayro.ai/blog/debusquer-les-meilleurs-cas-dusage-de-lintelligence-artificielle-ou-reussir-ses-entretiens-utilisateurs" rel="noopener">Débusquer les meilleurs cas d’usage IA : réussir ses entretiens utilisateurs</a></li>
+  </ul>
 
- 
+  <footer class="mono">Victor Galli · Paris · page mise à jour en septembre 2026 · <a href="https://github.com/VicKayro/vickayro.github.io" rel="noopener">source</a></footer>
 
 </div>
 </body>
 </html>
-```
